@@ -1,10 +1,39 @@
 
-<ul>
 
-  <li *ngFor="let image of images">
+<div class="upload_form">
+    <h1>Upload new image !</h1>
+    <input type="file" (change)="onFileSelected($event)">
+    <button class="button" (click)="uploadImage()"> Upload </button>
+</div>
 
-    {{ image }}
+<div class="records_container">
 
-  </li>
+  <div *ngFor="let image of images" class="record_holder">
+    <div>
+      <img src="http://127.0.0.1:5000/Uploads/{{image.img}}/original.png"/>
+    </div>
 
-</ul>
+    <div>
+      <button class="button" (click)="viewImage(image.id)">View Image</button>
+    </div>
+
+  </div>
+
+</div>
+
+<div *ngIf="viewing_image != null" class="result_container">
+
+  <div class="description_holder">
+      <div *ngFor="let image of viewing_image.images" class="result_img_desc" (click)="view_result(image)">
+        {{ image.description }}
+      </div>
+  </div>
+
+
+  <div *ngIf="selected_result_image != null" class="image_holder">
+      <H1>{{ selected_result_image.description }}</H1>
+      <img src="http://127.0.0.1:5000/Uploads/{{selected_result_image.img}}"/>
+  </div>
+
+
+</div>

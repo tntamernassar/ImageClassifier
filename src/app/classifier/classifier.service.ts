@@ -1,9 +1,12 @@
-
+import { HttpClient } from '@angular/common/http'
 
 export class ClassifierService{
 
-  getImages() {
-    return ['image1', 'image2', 'image3'];
+  /**
+    Send HTTP Request to get the images
+  **/
+  getImages(httpClient: HttpClient) {
+    return httpClient.get("http://127.0.0.1:5000/GetImages");
   }
 
 }

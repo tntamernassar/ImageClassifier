@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from "@angular/forms"
+import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { ClassifierComponent } from './classifier/classifier.component';
@@ -13,7 +14,8 @@ import { ClassifierService } from './classifier/classifier.service';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     ClassifierService
