@@ -12,6 +12,19 @@ And get three versions of the image :
 
 ![image](https://user-images.githubusercontent.com/26690099/159124325-f57ebdde-9916-40f1-a8a9-485986acd1c0.png)
 
+## Image Processing
+
+To extract the words from a certain image, we used an external process called "pytesseract" which we treated as a black box
+that takes in out input image, processes it into readable data stored in a list, which we then iterate over and get our 
+desired values which are the points of the rectangle which covers each word in the photo (We also check certain conditions such
+as if its not the first value we read and if its size is 12, otherwise it means its not a complete data block or a corrupted one).
+
+To extract the text lines from a certain image, we converted the image into gray scale, applied some threshold, we then detect
+the structure shape by choosing a proper kernel (what we thought would fit for most images), then by using a dilution morphology we 
+to 'blur' a text in a line, find the identified contours and by that we get the bounding rectangle of each single text line.
+
+To extract the main text from a certain image, we use almost the same method as in extracting text lines, but before we dilate,
+we increase the kernel size of the structure element to (15, 15) to identify larger text chunks and applying the same process on them.
 
 ## Usage
 
